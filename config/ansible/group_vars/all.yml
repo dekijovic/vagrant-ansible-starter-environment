@@ -1,0 +1,10 @@
+---
+common_packages:
+  - vim
+  - git
+  - htop
+  - curl
+
+virutal_hosts_name:
+  - www
+  - core

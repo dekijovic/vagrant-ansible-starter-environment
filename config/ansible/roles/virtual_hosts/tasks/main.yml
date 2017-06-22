@@ -1,0 +1,32 @@
+---
+- name: Copy virutal host apache
+  copy:
+    src: /vagrant/config/apache/sites-available/{{ item }}.conf
+    dest: /etc/apache2/sites-available/{{ item }}.conf
+    mode: 644
+    owner: www-data
+    group: www-data
+  with_items: "{{ virutal_hosts_name }}"
+
+- name: Copy servername.conf
+  copy:
+    src: /vagrant/config/apache/conf-available/servername.conf
+    dest: /etc/apache2/conf-available/servername.conf
+    mode: 644
+    owner: www-data
+    group: www-data
+
+- name: Enable Conf servername
+  file:
+    src: /etc/apache2/conf-available/servername.conf
+    dest: /etc/apache2/conf-enabled/servername.conf
+    state: link
+  notify: restart apache
+
+- name: Enable vhost
+  file:
+    src: /etc/apache2/sites-available/{{ item }}.conf
+    dest: /etc/apache2/sites-enabled/{{ item }}.conf
+    state: link
+  with_items: "{{ virutal_hosts_name }}"
+  notify: restart apache

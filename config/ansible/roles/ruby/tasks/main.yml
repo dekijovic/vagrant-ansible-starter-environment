@@ -1,0 +1,8 @@
+---
+- name: Update apt
+  become: yes
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install ruby
+  become: yes
+  apt: pkg=ruby-full state=installed

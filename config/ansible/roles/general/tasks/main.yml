@@ -1,0 +1,12 @@
+---
+- name: Installing apache2
+  apt: pkg=apache2 state=installed
+  notify:
+   - start apache
+
+# common packeges
+- name: Install Extra Packages
+  become: yes
+  apt: pkg={{ item }} state=latest
+  with_items: "{{ common_packages }}"
+  when: "{{ common_packages is defined }}"

@@ -1,0 +1,5 @@
+---
+- name: Install sass
+  gem:
+    name: sass
+    state: latest

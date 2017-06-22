@@ -1,0 +1,25 @@
+---
+
+- name: Install MySQL Packages
+  become: yes
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-client-core-5.6
+    - mysql-client-5.6
+    - mysql-server-5.6
+    - python-mysqldb
+
+- name: Update root password for all root accounts
+  mysql_user:
+    name: root
+    host: localhost
+    check_implicit_admin: yes
+    password: "{{ mysql_root_password }}"
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Make mysql accessible from remote
+  lineinfile: dest=/etc/mysql/my.cnf
+              regexp='bind-address'
+              line='bind-address = {{ mysql_address }}'
+  notify: start mysql
