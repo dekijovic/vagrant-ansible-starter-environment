@@ -1,5 +1,4 @@
 ---
-
 - hosts: all
   become: true
   roles:
@@ -10,5 +9,3 @@
     - mysql
     - sass
     - nodejs
-  vars:
-    nodejs_version: "6.5.0"
