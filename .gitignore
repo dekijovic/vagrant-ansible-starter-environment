@@ -1,3 +1,5 @@
 .vagrant/
 .vagrant/*
 /.idea
+/src/website2
+/src/website2/*

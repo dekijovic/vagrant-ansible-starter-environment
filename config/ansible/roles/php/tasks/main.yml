@@ -1,11 +1,7 @@
 ---
-- name: Update apt
-  become: yes
-  apt: update_cache=yes cache_valid_time=3600
-
-- name: Install pyton-software-properies
-  become: yes
-  apt: pkg=python-software-properties state=installed
+#- name: Update apt
+#  become: yes
+#  apt: update_cache=yes
 
 - name: Adding repository ondrej/php
   apt_repository:
@@ -31,6 +27,7 @@
     - php7.1-redis
     - php7.1-xsl
     - php7.1-json
-    - php7.0-tidy
+    - php7.1-tidy
+    - php7.1-mbstring
   notify:
    - restart apache

@@ -4,7 +4,14 @@ common_packages:
   - git
   - htop
   - curl
+  - gnupg2
 
 virutal_hosts_name:
+  - admin
   - www
+  - mobile
   - core
+  - web
+
+rubi-version: 2.3.1
+workspace: "/temp"

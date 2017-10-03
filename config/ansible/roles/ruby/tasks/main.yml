@@ -1,8 +1,12 @@
 ---
-- name: Update apt
-  become: yes
-  apt: update_cache=yes cache_valid_time=3600
+- name: Adding repository for ruby brightbox/ruby-ng
+  apt_repository:
+    repo: "ppa:brightbox/ruby-ng"
 
-- name: Install ruby
+- name: Install ruby 2.x
   become: yes
-  apt: pkg=ruby-full state=installed
+  apt: pkg=ruby2.2 state=latest
+
+- name: Install ruby 2.x-dev
+  become: yes
+  apt: pkg=ruby2.2-dev

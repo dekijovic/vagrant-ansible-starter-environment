@@ -1,0 +1,9 @@
+[submodule "website"]
+	path = src/website
+	url = git@bitbucket.org:recodesoft/website.git
+[submodule "admin"]
+	path = src/admin
+	url = git@bitbucket.org:recodesoft/admin.git
+[submodule "core"]
+	path = src/core
+	url = git@bitbucket.org:recodesoft/core.git

@@ -10,3 +10,17 @@
   apt: pkg={{ item }} state=latest
   with_items: "{{ common_packages }}"
   when: "{{ common_packages is defined }}"
+
+- name: Custom commands
+  copy:
+    src: /vagrant/config/commands/.bash_aliases
+    dest: /home/vagrant/.bash_aliases
+    mode: 777
+    owner: vagrant
+    group: vagrant
+
+- name: Reconfigure bashrc
+  shell: ". ~/.bashrc"
+
+#- name: Download ansible galaxy package for ruby
+#  shell: "ansible-galaxy install geerlingguy.ruby"

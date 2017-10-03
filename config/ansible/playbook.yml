@@ -6,6 +6,9 @@
     - general
     - virtual_hosts
     - php
+    - composer
     - mysql
     - sass
-    - angular
+    - nodejs
+  vars:
+    nodejs_version: "6.5.0"

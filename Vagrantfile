@@ -3,7 +3,8 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "my_website"
   config.vm.synced_folder "./src", "/vagrant/src", type: "nfs"
   config.vm.synced_folder "./config", "/vagrant/config", type: "nfs"
-  config.vm.network "private_network", ip: "55.55.55.55"
+  config.vm.synced_folder "./", "/vagrant", type: "nfs"
+  config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 3306, host: 3306
   config.vm.provider "virtualbox" do |vb|
@@ -15,9 +16,9 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id,
                     "--memory", 2048,
-                    "--cpus", 2,
                     "--name", "my_website",
-                    "--natdnshostresolver1", "on"
+                    "--natdnshostresolver1", "on",
+                    "--cpuexecutioncap", 50
                     ]
   end
   config.vm.provision :shell, path: "config/provision.sh"

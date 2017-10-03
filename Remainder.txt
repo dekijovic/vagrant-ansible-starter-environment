@@ -1,0 +1,50 @@
+if we need to update information about submodule, the best way is to remove and add again submodule in your version.
+
+REMOVE SUBMODULE:
+Remove the submodule’s entry in the .gitmodules file.Since lib/billboard is the only submodule in the SampleTheme repository,
+we can simply remove the file entirely by running “git rm lib/billboard”.If lib/billboard isn’t the only submodule, the .gitmodules
+file will have to be modified by hand. Open it up in vi, or your favorite text editory, and remove the three lines relevant to the submodule being removed. In this case,
+ these lines will be removed:
+[submodule “lib/billboard”]
+path = lib/billboard
+url = git@mygithost:billboard
+Remove the submodule’s entry in the .git/config. This step isn’t strictly necessary, but it does keep your config file tidy and will help prevent problems in the future.
+The submodule’s entry in .git/config will only be present if you’ve run “git submodule init” on the repository. If you haven’t, you can skip this step.In this example,
+ the following lines will be removed:
+[submodule “billboard”]
+url = git@mygithost:billboard
+Remove the path created for the submodule. This one is easy. Simply run “git rm –cached [plugin path]“. In this example, I will run “git rm –cached lib/billboard“.
+As I’ve seen noted elsewhere, do not put a trailing slash as the command will fail. For example, if I run “git rm –cached lib/billboard/“,
+I get an error: “fatal: pathspec ‘lib/billboard/’ did not match any files“.
+
+
+ADD SUBMODULE:
+
+git submodule add -url-
+
+to affect name and path of the submodule:
+
+git submodule add --name website -url@website- path/to/website
+
+UPDATE ALL SUBMODULES:
+
+git submodule update --recursive
+
+
+
+sudo apt-get update was not working until wi added (npm it couldn't installed until this) :
+    sudo echo nameserver 208.67.222.222 > /etc/resolv.conf
+
+Because virtual box costumization wasn't good, vagrant used 512 memory witch was couse a lot of problems,
+installing angular cli and starting mysql. With increasing memory and cpu resources it works as it should
+
+
+for some reason npm install had issues with creating symbolic links on shared folder, after a lot of banging head
+problem is solved with running bash terminal as an administrator. from what a could find, windows has som restriction policies
+about symlinks
+
+for building  angular 4 application - ng build
+
+var/log/ansible.log:
+
+for ansible we need python 2.6 and higher wich we install before playbook

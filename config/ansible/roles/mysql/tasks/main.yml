@@ -1,4 +1,5 @@
 ---
+# Retrieve the current hostname, because {{ ansible_hostname }} still contains the old name
 
 - name: Install MySQL Packages
   become: yes
@@ -17,6 +18,15 @@
     password: "{{ mysql_root_password }}"
     login_user: root
     login_password: "{{ mysql_root_password }}"
+
+- name: Add new user
+  mysql_user:
+    name: "promo"
+    host: localhost
+    password: "promo"
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
 
 - name: Make mysql accessible from remote
   lineinfile: dest=/etc/mysql/my.cnf
