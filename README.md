@@ -13,4 +13,6 @@ Current version of environment is using:
 
 Environment is initially setting 3 virtual hosts
 
-`    exe_playbook    ` command is added to rerun ansible commands in .bash_aliases
+On first `    vagrant up    ` the provision script is running ansible playbook
+
+Ansible playbook is running in localhost and `    exe_playbook    ` command is added to rerun the playbook
